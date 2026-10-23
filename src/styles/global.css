@@ -13,8 +13,12 @@
     --color-primary-800: var(--color-rose-800);
     --color-primary-900: var(--color-rose-900);
     --color-primary-950: var(--color-rose-950);
-    --font-headings: 'Space Grotesk Variable', ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-    --font-sans: 'Roboto Variable', ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    --color-dark-bg: #222222;
+    --color-dark-surface: #292929;
+    --color-dark-border: #E5E5E5;
+    --color-dark-muted: #B8B8B8;
+    --font-headings: 'Merriweather', ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    --font-sans: 'Lato', ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 
 @custom-variant dark (&:where(.dark, .dark *));
@@ -26,3 +30,7 @@ h1, h2, h3, h4, h5, h6 {
 .scroll-down #main-header {
     @apply transform -translate-y-[200px];
 }
+
+/* =================================
+   PERSONALIZACIONES DEL JARDÍN
+   ================================= */
