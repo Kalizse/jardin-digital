@@ -27,14 +27,6 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
-body {
-    font-family: var(--font-sans);
-    font-weight: 200;
-    color: #546175;
-    font-size: 18px;
-    line-height: 1.7;
-}
-
 h1, h2, h3, h4, h5, h6 {
     @apply font-headings;
 }
@@ -51,12 +43,3 @@ h1, h2, h3, h4, h5, h6 {
 /* =================================
    PERSONALIZACIONES DEL JARDÍN
    ================================= */
-
-   .prose p,
-.prose li,
-.prose blockquote,
-.prose ul,
-.prose ol {
-    color: #68717B !important;
-    font-weight: 300 !important;
-}
