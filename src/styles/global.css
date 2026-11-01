@@ -43,3 +43,14 @@ h1, h2, h3, h4, h5, h6 {
 /* =================================
    PERSONALIZACIONES DEL JARDÍN
    ================================= */
+
+   /* Ancho general de la web en móviles */
+@media (max-width: 639px) {
+    #main-content,
+    main {
+        width: 90%;
+        max-width: none;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
