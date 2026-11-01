@@ -1,4 +1,6 @@
+
 @import "tailwindcss";
+@import "@fontsource-variable/merriweather";
 @plugin "@tailwindcss/typography";
 
 @theme {
@@ -19,14 +21,27 @@
     --color-dark-border: #E5E5E5;
     --color-dark-muted: #B8B8B8;
 
-    --font-headings: 'Merriweather', ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-    --font-sans: 'Lato', ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    --font-headings: 'Merriweather', Georgia, serif;
+    --font-sans: 'Merriweather', Georgia, serif;
 }
 
 @custom-variant dark (&:where(.dark, .dark *));
 
+body {
+    font-family: var(--font-sans);
+    font-weight: 200;
+    color: #546175;
+    font-size: 18px;
+    line-height: 1.7;
+}
+
 h1, h2, h3, h4, h5, h6 {
     @apply font-headings;
+}
+
+::selection {
+    background-color: rgb(91 117 73 / 65%);
+    color: #ffffff;
 }
 
 .scroll-down #main-header {
@@ -37,21 +52,11 @@ h1, h2, h3, h4, h5, h6 {
    PERSONALIZACIONES DEL JARDÍN
    ================================= */
 
-   .dark {
-    --color-primary-50: #F4F7EF;
-    --color-primary-100: #E6EEDC;
-    --color-primary-200: #D3E3C3;
-    --color-primary-300: #BED5A9;
-    --color-primary-400: #A9C48F;
-    --color-primary-500: #98B47C;
-    --color-primary-600: #83A267;
-    --color-primary-700: #6B8853;
-    --color-primary-800: #536B41;
-    --color-primary-900: #3D5031;
-    --color-primary-950: #26351F;
-}
-
-::selection {
-    background-color: rgb(91 117 73 / 65%);
-    color: #ffffff;
+   .prose p,
+.prose li,
+.prose blockquote,
+.prose ul,
+.prose ol {
+    color: #68717B !important;
+    font-weight: 300 !important;
 }
