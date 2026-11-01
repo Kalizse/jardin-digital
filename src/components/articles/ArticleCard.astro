@@ -7,29 +7,27 @@ const { post, imageRatio = "aspect-[4/3]" } = Astro.props;
 ---
 
 <article class="group min-w-0">
-	<a href={`/blog/${post.id}`} class="block">
+  <a href={`/garden/${post.id}`} class="block">
+    {
+      post.data.heroImage && (
+        <div class={`relative w-full overflow-hidden bg-slate-100 dark:bg-slate-950 ${imageRatio}`}>
+          <Image
+            src={post.data.heroImage}
+            alt={post.data.title}
+            class="block w-full h-full object-cover transition duration-500 group-hover:scale-105"
+          />
+        </div>
+      )
+    }
 
-		{
-			post.data.heroImage && (
-				<div class={`relative w-full overflow-hidden bg-slate-100 dark:bg-slate-950 ${imageRatio}`}>
-					<Image
-						src={post.data.heroImage}
-						alt={post.data.title}
-						class="block w-full h-full object-cover transition duration-500 group-hover:scale-105"
-					/>
-				</div>
-			)
-		}
+    <div class="pt-3">
+      <time class="text-xs font-mono text-slate-500 dark:text-slate-400">
+        <FormattedDate date={post.data.pubDate} />
+      </time>
 
-		<div class="pt-3">
-			<time class="text-xs font-mono text-slate-500 dark:text-slate-400">
-				<FormattedDate date={post.data.pubDate} />
-			</time>
-
-			<h2 class="text-lg font-semibold mt-1 group-hover:text-primary-500 transition">
-				{post.data.title}
-			</h2>
-		</div>
-
-	</a>
+      <h2 class="text-lg font-semibold mt-1 group-hover:text-primary-500 transition">
+        {post.data.title}
+      </h2>
+    </div>
+  </a>
 </article>
