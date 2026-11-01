@@ -1,0 +1,102 @@
+
+---
+import { getCollection } from "astro:content";
+import type { CollectionEntry } from "astro:content";
+import type { GetStaticPaths } from "astro";
+import { Icon } from "astro-icon/components";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import ArticleCard from "../../components/articles/ArticleCard.astro";
+
+export const getStaticPaths = (async ({ paginate }) => {
+  const posts = (await getCollection("blog")).sort(
+    (a: CollectionEntry<"blog">, b: CollectionEntry<"blog">) =>
+      b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+  );
+
+  return paginate(posts, { pageSize: 12 });
+}) satisfies GetStaticPaths;
+
+const { page } = Astro.props;
+
+const pageNums = Array.from({ length: page.lastPage }, (_, i) => i + 1);
+
+const title =
+  page.currentPage === 1 ? "Garden" : `Garden - Page ${page.currentPage}`;
+
+const description =
+  "A collection of notes, ideas, discoveries and reflections.";
+
+const imageRatios = [
+  "aspect-[3/4]",
+  "aspect-[4/3]",
+  "aspect-square",
+  "aspect-[5/4]",
+  "aspect-[3/4]",
+  "aspect-[16/9]",
+];
+---
+
+<BaseLayout title={title} description={description}>
+  <div class="w-[97vw] max-w-none relative left-1/2 -translate-x-1/2">
+
+    <section>
+      <div class="columns-2 lg:columns-3 gap-x-4">
+        {
+          page.data.map((post, index) => (
+            <div class="break-inside-avoid mb-8">
+              <ArticleCard
+                post={post}
+                imageRatio={imageRatios[index % imageRatios.length]}
+              />
+            </div>
+          ))
+        }
+      </div>
+
+      {
+        page.lastPage > 1 && (
+          <div class="flex justify-center my-20">
+            <nav class="flex items-center justify-center gap-5">
+
+              {page.url.prev && (
+                <a
+                  href={page.url.prev}
+                  class="inline-flex items-center"
+                  aria-label="Previous page"
+                >
+                  <Icon name="heroicons:chevron-left-16-solid" />
+                </a>
+              )}
+
+              {pageNums.map((num) =>
+                num === page.currentPage ? (
+                  <span class="inline-flex items-center" aria-current="page">
+                    {num}
+                  </span>
+                ) : (
+                  <a
+                    href={`${num === 1 ? "/garden" : "/garden/" + num}`}
+                    class="inline-flex items-center"
+                  >
+                    {num}
+                  </a>
+                ),
+              )}
+
+              {page.url.next && (
+                <a
+                  href={page.url.next}
+                  class="inline-flex items-center"
+                  aria-label="Next page"
+                >
+                  <Icon name="heroicons:chevron-right-16-solid" />
+                </a>
+              )}
+
+            </nav>
+          </div>
+        )
+      }
+    </section>
+  </div>
+</BaseLayout>

@@ -1,3 +1,4 @@
+
 ---
 import BaseHead from "../components/BaseHead.astro";
 import Header from "../components/Header.astro";
@@ -11,36 +12,35 @@ const { title, description, pubDate, updatedDate, image } = Astro.props;
 
 <!doctype html>
 <html lang="en" class="h-full">
-	<head>
-		<BaseHead
-			title={title ? `${title} | ${SITE_TITLE}` : SITE_TITLE}
-			description={description || SITE_DESCRIPTION}
-			image={image}
-		/>
-	</head>
-	<body
-		class="flex h-full bg-white text-slate-900 dark:bg-[#222222] dark:text-white"
-	>
-		<div class="fixed inset-0 flex justify-center sm:px-8">
-			<div class="flex w-full max-w-7xl lg:px-8">
-				<div
-					class="w-full bg-white ring-1 ring-transparent dark:bg-[#222222] dark:ring-transparent"
-				>
-				</div>
-			</div>
-		</div>
-		<div class="relative flex w-full flex-col">
-			<Header />
-			<main class="flex-auto">
-				<div class="sm:px-8 mt-32">
-					<div class="mx-auto w-full max-w-7xl lg:px-8">
-						<div class="relative px-4 sm:px-8 lg:px-12">
-							<slot />
-						</div>
-					</div>
-				</div>
-			</main>
-			<Footer />
-		</div>
-	</body>
+  <head>
+    <BaseHead
+      title={title ? `${title} | ${SITE_TITLE}` : SITE_TITLE}
+      description={description || SITE_DESCRIPTION}
+      image={image}
+    />
+  </head>
+
+  <body class="flex min-h-full bg-white text-slate-900 dark:bg-[#222222] dark:text-white">
+
+    <!-- Background -->
+    <div class="fixed inset-0 flex justify-center">
+      <div class="w-[95vw] lg:w-[90vw] xl:w-[88vw] h-full bg-white dark:bg-[#222222]"></div>
+    </div>
+
+    <!-- Main layout -->
+    <div class="relative flex w-full flex-col">
+      <Header />
+
+      <main class="flex-auto">
+        <div class="mx-auto mt-8 w-[95vw] lg:w-[90vw] xl:w-[88vw]">
+          <div class="relative w-full">
+            <slot />
+          </div>
+        </div>
+      </main>
+
+      <Footer />
+    </div>
+
+  </body>
 </html>
