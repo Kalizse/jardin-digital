@@ -1,4 +1,3 @@
-
 // @ts-check
 import {
 	defineConfig,
@@ -17,8 +16,7 @@ const disableImageOptimization = process.env.NODE_ENV === "development";
 export default defineConfig({
 	trailingSlash: "never",
 
-	site: "https://kalizse.github.io",
-	base: "/jardin-digital",
+	site: "https://luciacubeiro.com",
 
 	vite: {
 		plugins: [tailwindcss()],
