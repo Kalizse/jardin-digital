@@ -2,21 +2,23 @@
 @plugin "@tailwindcss/typography";
 
 @theme {
-    --color-primary-50: var(--color-rose-50);
-    --color-primary-100: var(--color-rose-100);
-    --color-primary-200: var(--color-rose-200);
-    --color-primary-300: var(--color-rose-300);
-    --color-primary-400: var(--color-rose-400);
-    --color-primary-500: var(--color-rose-500);
-    --color-primary-600: var(--color-rose-600);
-    --color-primary-700: var(--color-rose-700);
-    --color-primary-800: var(--color-rose-800);
-    --color-primary-900: var(--color-rose-900);
-    --color-primary-950: var(--color-rose-950);
+    --color-primary-50: #F3F6EF;
+    --color-primary-100: #E4EBDD;
+    --color-primary-200: #D0DFC5;
+    --color-primary-300: #B8CDA8;
+    --color-primary-400: #A1BA8D;
+    --color-primary-500: #89A575;
+    --color-primary-600: #718D5C;
+    --color-primary-700: #5B7549;
+    --color-primary-800: #455B38;
+    --color-primary-900: #36472D;
+    --color-primary-950: #202C1B;
+
     --color-dark-bg: #222222;
     --color-dark-surface: #292929;
     --color-dark-border: #E5E5E5;
     --color-dark-muted: #B8B8B8;
+
     --font-headings: 'Merriweather', ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     --font-sans: 'Lato', ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
@@ -34,3 +36,22 @@ h1, h2, h3, h4, h5, h6 {
 /* =================================
    PERSONALIZACIONES DEL JARDÍN
    ================================= */
+
+   .dark {
+    --color-primary-50: #F4F7EF;
+    --color-primary-100: #E6EEDC;
+    --color-primary-200: #D3E3C3;
+    --color-primary-300: #BED5A9;
+    --color-primary-400: #A9C48F;
+    --color-primary-500: #98B47C;
+    --color-primary-600: #83A267;
+    --color-primary-700: #6B8853;
+    --color-primary-800: #536B41;
+    --color-primary-900: #3D5031;
+    --color-primary-950: #26351F;
+}
+
+::selection {
+    background-color: rgb(91 117 73 / 65%);
+    color: #ffffff;
+}
