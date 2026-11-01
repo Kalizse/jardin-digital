@@ -1,37 +1,34 @@
+
 // @ts-check
 import {
 	defineConfig,
 	passthroughImageService,
 	sharpImageService,
 } from "astro/config";
+
 import tailwindcss from "@tailwindcss/vite";
 import mdx from "@astrojs/mdx";
-
 import icon from "astro-icon";
-
 import sitemap from "@astrojs/sitemap";
 
-import cloudflare from "@astrojs/cloudflare";
-
-// disable image optimization in dev mode to allow the project to work on StackBlitz
+// Desactivar optimización de imágenes en desarrollo
 const disableImageOptimization = process.env.NODE_ENV === "development";
 
-// https://astro.build/config
 export default defineConfig({
-    trailingSlash: "never",
-    site: "https://example.com",
+	trailingSlash: "never",
 
-    vite: {
+	site: "https://kalizse.github.io",
+	base: "/jardin-digital",
+
+	vite: {
 		plugins: [tailwindcss()],
 	},
 
-    integrations: [mdx(), icon(), sitemap()],
+	integrations: [mdx(), icon(), sitemap()],
 
-    image: {
+	image: {
 		service: disableImageOptimization
 			? passthroughImageService()
 			: sharpImageService(),
 	},
-
-    adapter: cloudflare()
 });
