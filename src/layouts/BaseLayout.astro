@@ -24,7 +24,7 @@ const { title, description, pubDate, updatedDate, image } = Astro.props;
 
     <!-- Background -->
     <div class="fixed inset-0 flex justify-center">
-      <div class="w-[85vw] sm:w-[95vw] lg:w-[90vw] xl:w-[88vw] h-full bg-white dark:bg-[#222222]"></div>
+      <div class="w-[85vw] sm:w-[95vw] lg:w-[90vw] xl:w-[40vw] h-full bg-white dark:bg-[#222222]"></div>
     </div>
 
     <!-- Main layout -->
@@ -32,7 +32,7 @@ const { title, description, pubDate, updatedDate, image } = Astro.props;
       <Header />
 
       <main class="flex-auto">
-        <div class="mx-auto mt-8 w-[90vw] sm:w-[95vw] lg:w-[90vw] xl:w-[88vw]">
+        <div class="mx-auto mt-8 w-[85vw] sm:w-[95vw] lg:w-[90vw] xl:w-[95vw]">
           <div class="relative w-full">
             <slot />
           </div>

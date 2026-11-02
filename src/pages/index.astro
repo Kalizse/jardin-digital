@@ -2,7 +2,6 @@
 ---
 import { getCollection } from "astro:content";
 import type { CollectionEntry } from "astro:content";
-import { Icon } from "astro-icon/components";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import ArticleCard from "../components/articles/ArticleCard.astro";
 
@@ -11,19 +10,7 @@ const posts = (await getCollection("garden")).sort(
     b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
 );
 
-const pageSize = 12;
-const currentPage = Number(Astro.url.pathname.split("/")[1]) || 1;
-const lastPage = Math.max(1, Math.ceil(posts.length / pageSize));
-
-const pageData = posts.slice(
-  (currentPage - 1) * pageSize,
-  currentPage * pageSize,
-);
-
-const pageNums = Array.from({ length: lastPage }, (_, i) => i + 1);
-
-const title =
-  currentPage === 1 ? "Garden" : `Garden - Page ${currentPage}`;
+const title = "Garden";
 
 const description =
   "A collection of notes, ideas, discoveries and reflections.";
@@ -39,11 +26,11 @@ const imageRatios = [
 ---
 
 <BaseLayout title={title} description={description}>
-  <div class="w-[97vw] max-w-none relative left-1/2 -translate-x-1/2">
+  <div class="relative left-1/2 w-[99vw] max-w-none -translate-x-1/2">
     <section>
-      <div class="columns-2 lg:columns-3 gap-x-4">
+      <div class="columns-2 lg:columns-3 2xl:columns-5 gap-x-4">
         {
-          pageData.map((post, index) => (
+          posts.map((post, index) => (
             <div class="break-inside-avoid mb-8">
               <ArticleCard
                 post={post}
@@ -53,49 +40,6 @@ const imageRatios = [
           ))
         }
       </div>
-
-      {
-        lastPage > 1 && (
-          <div class="flex justify-center my-20">
-            <nav class="flex items-center justify-center gap-5">
-              {currentPage > 1 && (
-                <a
-                  href={currentPage === 2 ? "/" : `/${currentPage - 1}`}
-                  class="inline-flex items-center"
-                  aria-label="Previous page"
-                >
-                  <Icon name="heroicons:chevron-left-16-solid" />
-                </a>
-              )}
-
-              {pageNums.map((num) =>
-                num === currentPage ? (
-                  <span class="inline-flex items-center" aria-current="page">
-                    {num}
-                  </span>
-                ) : (
-                  <a
-                    href={num === 1 ? "/" : `/${num}`}
-                    class="inline-flex items-center"
-                  >
-                    {num}
-                  </a>
-                ),
-              )}
-
-              {currentPage < lastPage && (
-                <a
-                  href={`/${currentPage + 1}`}
-                  class="inline-flex items-center"
-                  aria-label="Next page"
-                >
-                  <Icon name="heroicons:chevron-right-16-solid" />
-                </a>
-              )}
-            </nav>
-          </div>
-        )
-      }
     </section>
   </div>
 </BaseLayout>
